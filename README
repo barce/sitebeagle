@@ -1,1 +1,5 @@
 Beagles make good watch dogs.
+
+requirements:
+  curl
+
