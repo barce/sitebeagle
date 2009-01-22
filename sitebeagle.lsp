@@ -30,14 +30,16 @@
   ; convert web page into md5
   ;
   (set 'get-stuff (append "curl -s " url))
-  (println get-stuff)
+  ;(println get-stuff)
+
+  ; html is the web page turned into a list of lines
   (set 'html (exec get-stuff))
   ;(println (nth 0 html))
   (set 'bigstring "")
   (dolist (line html)
     (set 'bigstring (append bigstring line "\n"))
   )
-  (print "\n(" bigstring ")\n")
+  ;(print "\n(" bigstring ")\n")
   (crypto:md5 bigstring)
 
 )
@@ -52,10 +54,20 @@
 (set 'fileurl (furl url))
 (println "getmd5")
 
-(println (getmd5 url))
+(set 'mymd5 (getmd5 url))
+(set 'tmpmd5 mymd5)
 
+(println mymd5)
+(println tmpmd5)
 
 (println "url: " url)
 (println "fileurl: " fileurl)
+
+(do-while (= mymd5 tmpmd5) 
+  (set 'tmpmd5 (getmd5 url))
+  (println mymd5)
+  (println tmpmd5)
+  (sleep 5000)
+)
 
 (exit)
