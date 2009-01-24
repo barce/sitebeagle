@@ -1,20 +1,32 @@
-#!/usr/bin/env newlisp
+#!/usr/bin/newlisp
 
 
-(load "Sitebeagle.lsp")
+(load "sitebeagle.lsp")
 
 ;
 ; start of tests and variable definitions
 ;
-;(set 'url "http://www.google.com/")
-;(set 'url "http://jimbarcelona.com/")
+; 
+;
 
-(println "----[ testing Sitebeagle ]----")
+(println "----[ testing Sitebeagle distributed computing version ]----")
+(println "----[  in sitebeagle directory type: newlisp -c -d 4711]----")
+
+(set 'myprog [text]
+(load "sitebeagle.lsp")
 (new Sitebeagle 'snoopy)
 (set 'snoopy:url "http://www.codebelay.com/")
+(snoopy:getmd5)
+[/text])
+
+(println (net-eval '(("localhost" 4711 myprog true)) 1000 ))
 
 
-(println snoopy:url)
-(snoopy:pollurl)
+(println "----[ testing Sitebeagle in script ]----")
+(new Sitebeagle 'katie)
+(set 'katie:url "https://thebe.jtan.com/~barce/links")
+(println katie:url)
+(println (katie:getmd5))
+(katie:pollurl)
 
-
+(exit)
