@@ -71,11 +71,10 @@
 ;
 ;(set 'url "http://www.google.com/")
 ;(set 'url "http://jimbarcelona.com/")
-;(set 'url "https://offtopic.mccann.com/")
 
 (println "----[ testing Sitebeagle ]----")
 (new Sitebeagle 'snoopy)
-(set 'snoopy:url "https://offtopic.mccann.com")
+(set 'snoopy:url "http://www.codebelay.com/")
 
 
 (println snoopy:url)
