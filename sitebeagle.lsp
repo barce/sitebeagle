@@ -31,7 +31,12 @@
   ; 
   ; convert web page into md5
   ;
-  (set 'get-stuff (append "curl -s " url))
+  (if (regex "http:*" url)
+    (set 'get-stuff (append "curl -s " url))
+  )
+  (if (regex "https:*" url)
+    (set 'get-stuff (append "curl -k -s " url))
+  )
 
   ; html is the web page turned into a list of lines
   (set 'html (exec get-stuff))
@@ -45,32 +50,36 @@
   (crypto:md5 bigstring)
 )
 
+(define (pollurl) 
+	(set 'first_md5 (getmd5))
+	(set 'current_md5 (getmd5))
+	(println first_md5)
+	(println current_md5)
+	
+	(do-while (= first_md5 current_md5) 
+	  (set 'current_md5 (getmd5))
+	  (println "first:   " first_md5)
+	  (println "current: " current_md5)
+	  (sleep 5000)
+	)
+)
+
 (context MAIN)
 
 ;
 ; start of tests and variable definitions
 ;
 ;(set 'url "http://www.google.com/")
-(set 'url "http://jimbarcelona.com/")
+;(set 'url "http://jimbarcelona.com/")
+;(set 'url "https://offtopic.mccann.com/")
 
 (println "----[ testing Sitebeagle ]----")
 (new Sitebeagle 'snoopy)
-(set 'snoopy:url "http://jimbarcelona.com")
+(set 'snoopy:url "https://offtopic.mccann.com")
+
 
 (println snoopy:url)
+(snoopy:pollurl)
 
-; test for furl
-
-(set 'snoopy:first_md5 (snoopy:getmd5))
-(set 'snoopy:current_md5 (snoopy:getmd5))
-(println snoopy:first_md5)
-(println snoopy:current_md5)
-
-(do-while (= snoopy:first_md5 snoopy:current_md5) 
-  (set 'snoopy:current_md5 (snoopy:getmd5))
-  (println snoopy:first_md5)
-  (println snoopy:current_md5)
-  (sleep 5000)
-)
 
 (exit)
