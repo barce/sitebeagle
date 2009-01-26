@@ -1,9 +1,5 @@
 #!/usr/bin/env newlisp
 
-; usage: sitebeagle.lsp url seconds
-
-; change this to where your install of crypto.lsp is
-
 
 ;
 ; class Sitebeagle
@@ -15,6 +11,7 @@
 (set 'url nil)
 (set 'first_md5 nil)
 (set 'current_md5 nil)
+(set 'microwait nil)
 
 ;
 ; furl: create a diskspace friendly url
@@ -53,6 +50,7 @@
 (define (pollurl) 
 	(set 'first_md5 (getmd5))
 	(set 'current_md5 (getmd5))
+  (if (= microwait nil) (set 'microwait 5000))
 	(println first_md5)
 	(println current_md5)
 	
@@ -60,9 +58,13 @@
 	  (set 'current_md5 (getmd5))
 	  (println "first:   " first_md5)
 	  (println "current: " current_md5)
-	  (sleep 5000)
+	  (sleep microwait)
 	)
+
+  ; something changed, let's contact twitter
+  
 )
 
 (context MAIN)
+
 
