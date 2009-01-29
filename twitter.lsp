@@ -5,6 +5,8 @@
 ; -------------
 ;
 ; used for messaging users on twitter
+;
+; curl --basic --user user:pass -d "user=barce&text=blah"  http://twitter.com/direct_messages/new.xml
 (context 'Twitter)
 (set 'user nil)
 (set 'pass nil)
