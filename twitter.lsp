@@ -33,11 +33,3 @@
 
 (context MAIN)
 
-(new Twitter 'tweet)
-(set 'tweet:user "noobwatcher")
-(set 'tweet:pass "PASS")
-(set 'tweet:recipient "barce")
-
-(println (tweet:dm "test 123 test"))
-
-(exit)

@@ -60,9 +60,7 @@
 	  (println "current: " current_md5)
 	  (sleep microwait)
 	)
-
-  ; something changed, let's contact twitter
-  
+  (+ 1 1)
 )
 
 (context MAIN)

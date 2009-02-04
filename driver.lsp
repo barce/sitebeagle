@@ -2,6 +2,7 @@
 
 
 (load "sitebeagle.lsp")
+(load "twitter.lsp");
 
 ;
 ; start of tests and variable definitions
@@ -19,8 +20,8 @@
 (snoopy:getmd5)
 [/text])
 
-(println (net-eval '(("localhost" 4711 myprog true)) 1000 ))
 
+(println (net-eval '(("localhost" 4711 myprog true)) 1000 ))
 
 (println "----[ testing Sitebeagle in script ]----")
 (new Sitebeagle 'katie)
@@ -28,5 +29,14 @@
 (println katie:url)
 (println (katie:getmd5))
 (katie:pollurl)
+
+(println "sending tweet...")
+(new Twitter 'tweet)
+(set 'tweet:user "noobwatcher")
+(set 'tweet:pass "PASS")
+(set 'tweet:recipient "barce")
+
+(tweet:dm (string "something changed: " katie:url))
+(println "something changed: " katie:url)
 
 (exit)
