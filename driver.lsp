@@ -32,8 +32,16 @@
 
 (println "sending tweet...")
 (new Twitter 'tweet)
+
+;
+; this is the account you use to send tweets
+;
 (set 'tweet:user "noobwatcher")
 (set 'tweet:pass "PASS")
+
+;
+; this is the account you use to receive tweets
+;
 (set 'tweet:recipient "barce")
 
 (tweet:dm (string "something changed: " katie:url))
