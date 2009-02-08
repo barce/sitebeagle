@@ -31,7 +31,7 @@
 
 	; TODO: re-write this so that curl options are set up in a string
   (if (regex "http:*" url)
-    (set 'get-stuff (append "curl --conntec-timeout 30 -m 60 -s " url))
+    (set 'get-stuff (append "curl --connect-timeout 30 -m 60 -s " url))
   )
   (if (regex "https:*" url)
     (set 'get-stuff (append "curl --connect-timeout 30 -m 60 -k -s " url))
