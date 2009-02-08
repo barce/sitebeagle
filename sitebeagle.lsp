@@ -28,11 +28,13 @@
   ; 
   ; convert web page into md5
   ;
+
+	; TODO: re-write this so that curl options are set up in a string
   (if (regex "http:*" url)
-    (set 'get-stuff (append "curl -s " url))
+    (set 'get-stuff (append "curl --conntec-timeout 30 -m 60 -s " url))
   )
   (if (regex "https:*" url)
-    (set 'get-stuff (append "curl -k -s " url))
+    (set 'get-stuff (append "curl --connect-timeout 30 -m 60 -k -s " url))
   )
 
   ; html is the web page turned into a list of lines
