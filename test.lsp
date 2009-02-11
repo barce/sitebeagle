@@ -21,7 +21,8 @@
 [/text])
 
 
-(println (net-eval '(("localhost" 4711 myprog true)) 1000 ))
+;
+(println (net-eval '(("localhost" 4711 myprog true)) 1005 ))
 
 (println "----[ testing Sitebeagle in script ]----")
 (new Sitebeagle 'katie)
