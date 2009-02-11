@@ -20,7 +20,7 @@
 (snoopy:getmd5)
 [/text])
 
-
+; test
 (println (net-eval '(("localhost" 4711 myprog true)) 1000 ))
 
 (println "----[ testing Sitebeagle in script ]----")
