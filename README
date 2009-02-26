@@ -1,5 +1,9 @@
 "Beagles make good watch dogs." -- from the wikipedia entry for Beagles
 
+Sitebeagle watches a site for you.
+
+By: barce
+
 requirements:
   curl
   twitter account from http://twitter.com/ for sending changes / outages
