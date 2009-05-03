@@ -13,6 +13,7 @@
 )
 
 (set 'url (nth 2 params))
+(set 'startdate (date))
 
 (println "----[ Sitebeagle is checking your site ]----")
 (new Sitebeagle 'snoopy)
@@ -40,5 +41,10 @@
 ;
 (tweet:dm (string "something changed: " snoopy:url))
 (println "something changed: " snoopy:url)
+(println "startdate:")
+(println startdate)
+(println "enddate:")
+(println (date))
+
 
 (exit)

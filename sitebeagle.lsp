@@ -45,6 +45,8 @@
     (set 'bigstring (append bigstring line "\n"))
   )
 
+	(println url)
+
   ; return bigstring as md5
   (crypto:md5 bigstring)
 )
@@ -58,8 +60,10 @@
 	
 	(do-while (= first_md5 current_md5) 
 	  (set 'current_md5 (getmd5))
+		(println (date))
 	  (println "first:   " first_md5)
 	  (println "current: " current_md5)
+	  (println)
 	  (sleep microwait)
 	)
   (+ 1 1)
