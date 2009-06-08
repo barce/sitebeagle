@@ -4,6 +4,8 @@ Sitebeagle watches a site for you.
 
 By: barce
 
+; tag test_b
+
 requirements:
   curl
   twitter account from http://twitter.com/ for sending changes / outages
