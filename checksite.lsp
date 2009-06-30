@@ -26,6 +26,10 @@
 (new Twitter 'tweet)
 
 ;
+; TODO: find a way to just put this info into YAML
+;
+
+;
 ; EDIT BELOW: this is the account you use to send tweets
 ;
 (set 'tweet:user "noobwatcher")
