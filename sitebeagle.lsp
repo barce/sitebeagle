@@ -45,10 +45,16 @@
     (set 'bigstring (append bigstring line "\n"))
   )
 
+	; write bigstring to a file with md5string as hash
+	(set 'urlfile (append (crypto:md5 bigstring) ".txt"))
+	(write-file urlfile bigstring)
+
+
 	(println url)
 
-  ; return bigstring as md5
-  (crypto:md5 bigstring)
+
+	; return bigstring as md5
+	(crypto:md5 bigstring)
 )
 
 (define (pollurl) 
