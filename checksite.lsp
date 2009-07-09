@@ -38,6 +38,7 @@
 ;
 ; EDIT BELOW: this is the account you use to receive tweets
 ;
+; TODO: change code to support a list of twitter accounts
 (set 'tweet:recipient "barce")
 
 ;
