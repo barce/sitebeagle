@@ -5,6 +5,7 @@ Sitebeagle watches a site for you.
 By: barce
 
 ; tag test_b
+; doing a cherry pick test
 
 requirements:
   curl
