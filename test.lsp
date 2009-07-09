@@ -1,6 +1,7 @@
 #!/usr/bin/newlisp
 
 ; test tag test_a
+; cherry pick test 2
 
 (load "sitebeagle.lsp")
 (load "twitter.lsp");
