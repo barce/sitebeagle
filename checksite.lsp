@@ -7,12 +7,14 @@
 (set 'params (main-args))
 (if (< (length params) 3)
   (begin
-    (println "USAGE: checksite.lsp url")
+    (println "USAGE: checksite.lsp url repeats")
     (exit)
   )
 )
 
 (set 'url (nth 2 params))
+; repeats - # of repeat alerts to send once an alert is tripped
+(set 'repeats (nth 3 params))
 (set 'startdate (date))
 
 (println "----[ Sitebeagle is checking your site ]----")
@@ -44,12 +46,17 @@
 ;
 ; send the tweet
 ;
-(tweet:dm (string "something changed: " snoopy:url))
-(println "something changed: " snoopy:url)
-(println "startdate:")
-(println startdate)
-(println "enddate:")
-(println (date))
+(until (> iter (int repeats))
+	(tweet:dm (string "sequnce (" (int iter) ") something changed: " snoopy:url))
+  (println "sending tweet alert sequence: " (int iter))
+	(println "something changed: " snoopy:url)
+	(println "startdate:")
+	(println startdate)
+	(println "enddate:")
+	(println (date))
+  (inc iter)
+  (sleep 15000)
 
+) ; end until
 
 (exit)
