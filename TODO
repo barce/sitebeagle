@@ -1,0 +1,19 @@
+[ ] fix this sort of error:
+
+ttp://www.startwithapencil.com/
+Thu Aug 27 02:18:26 2009
+first:   991f0fb3408feaac190ea7ad8cbac50e
+current: 991f0fb3408feaac190ea7ad8cbac50e
+
+http://www.startwithapencil.com/
+Thu Aug 27 02:18:31 2009
+first:   991f0fb3408feaac190ea7ad8cbac50e
+current: 991f0fb3408feaac190ea7ad8cbac50e
+
+
+ERR: list expected in function dolist : html
+called from user defined function snoopy:getmd5
+called from user defined function snoopy:pollurl
+barce@domU-12-31-39-03-49-46:~/lsp/sitebeagle$ ./checksite.lsp http://www.startwithapencil.com/ 20
+
+
