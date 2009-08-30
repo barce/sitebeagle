@@ -20,7 +20,8 @@ how to use:
 		twitter sender account password
 		twitter recipient, person who gets twitters saying site is down
 	start sitebeagle:
-		./checksite http://example.com/
+		./checksite http://example.com/ number_of_tweets_to_send_if_site_changed
 
 known issues:
 	if a site always changes it's html when you go to it, sitebeagle won't work.	
+
