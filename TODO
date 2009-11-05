@@ -16,4 +16,4 @@ called from user defined function snoopy:getmd5
 called from user defined function snoopy:pollurl
 barce@domU-12-31-39-03-49-46:~/lsp/sitebeagle$ ./checksite.lsp http://www.startwithapencil.com/ 20
 
-
+[ ] use gearman instead
