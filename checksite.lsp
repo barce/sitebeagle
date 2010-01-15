@@ -34,7 +34,7 @@
 ;
 ; EDIT BELOW: this is the account you use to send tweets
 ;
-(set 'tweet:user "noobwatcher")
+(set 'tweet:user "sitebeagle")
 (set 'tweet:pass "PASS")
 
 ;
