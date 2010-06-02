@@ -28,6 +28,8 @@ how to use:
     ./checksite.lsp http://www.codebelay.com/ 1 "February.*"
 
 known issues:
-	if a site always changes it's html when you go to it, sitebeagle won't work.	
+	if a site always changes its html when you go to it, sitebeagle won't work,
+  unless a regex is used.
+
   please use a regex to track only the parts of a page you want to track.
 
