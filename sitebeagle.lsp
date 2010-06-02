@@ -49,12 +49,17 @@
   ; if there's a regex then let's cut the string down
   (if (> (length myregex) 0)
    ; TODO: deal with the array returned
-   ; (set 'bigstring (append(regex myregex bigstring)))
+   (set 'bigstring ((regex myregex bigstring) 0 ))
   )
 
   (if (> (length myregex) 0)
-    (println "using regex")
+    (println "using regex " myregex)
   )
+
+  (if (> (length myregex) 0)
+    (println "matched " bigstring)
+  )
+
 	; write bigstring to a file with md5string as hash
 	(set 'urlfile (append (crypto:md5 bigstring) ".txt"))
 	(write-file urlfile bigstring)
