@@ -21,6 +21,7 @@
 (println "----[ Sitebeagle is checking your site ]----")
 (new Sitebeagle 'snoopy)
 (set 'snoopy:url (string url))
+(set 'snoopy:myregex (string myregex))
 (println snoopy:url)
 (println (snoopy:getmd5))
 (snoopy:pollurl)

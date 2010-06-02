@@ -12,6 +12,7 @@
 (set 'first_md5 nil)
 (set 'current_md5 nil)
 (set 'microwait nil)
+(set 'myregex nil)
 
 ;
 ; furl: create a diskspace friendly url
@@ -45,6 +46,15 @@
     (set 'bigstring (append bigstring line "\n"))
   )
 
+  ; if there's a regex then let's cut the string down
+  (if (> (length myregex) 0)
+   ; TODO: deal with the array returned
+   ; (set 'bigstring (append(regex myregex bigstring)))
+  )
+
+  (if (> (length myregex) 0)
+    (println "using regex")
+  )
 	; write bigstring to a file with md5string as hash
 	(set 'urlfile (append (crypto:md5 bigstring) ".txt"))
 	(write-file urlfile bigstring)
