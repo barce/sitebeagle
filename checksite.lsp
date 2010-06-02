@@ -5,9 +5,9 @@
 (load "twitter.lsp");
 
 (set 'params (main-args))
-(if (< (length params) 3)
+(if (< (length params) 4)
   (begin
-    (println "USAGE: checksite.lsp url repeats")
+    (println "USAGE: checksite.lsp url repeats myregex")
     (exit)
   )
 )
@@ -15,6 +15,7 @@
 (set 'url (nth 2 params))
 ; repeats - # of repeat alerts to send once an alert is tripped
 (set 'repeats (nth 3 params))
+(set 'myregex (nth 4 params))
 (set 'startdate (date))
 
 (println "----[ Sitebeagle is checking your site ]----")
