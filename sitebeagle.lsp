@@ -40,7 +40,7 @@
 
   ; html is the web page turned into a list of lines
   (set 'html (exec get-stuff))
-  ;(println (nth 0 html))
+  (println (nth 0 html))
   (set 'bigstring "")
   (dolist (line html)
     (set 'bigstring (append bigstring line "\n"))
@@ -49,7 +49,15 @@
   ; if there's a regex then let's cut the string down
   (if (> (length myregex) 0)
    ; TODO: deal with the array returned
-   (set 'bigstring ((regex myregex bigstring) 0 ))
+   ;(set 'bigstring ((regex myregex bigstring) 0 ))
+    (set 'mytest (regex myregex bigstring))
+  )
+
+  (if (= mytest nil)
+    (set 'bigstring "")
+  )
+  (if (!= mytest nil)
+    (set 'bigstring ((regex myregex bigstring) 0 ))
   )
 
   (if (> (length myregex) 0)
