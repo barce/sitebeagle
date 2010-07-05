@@ -49,15 +49,22 @@
   ; if there's a regex then let's cut the string down
   (if (> (length myregex) 0)
    ; TODO: deal with the array returned
-   ;(set 'bigstring ((regex myregex bigstring) 0 ))
     (set 'mytest (regex myregex bigstring))
   )
 
-  (if (= mytest nil)
-    (set 'bigstring "")
+  (println "mytest: " mytest)
+  (println "length myregex: " (length myregex))
+
+  (if (= mytest nil) 
+    (if (> (length myregex) 0)
+      (set 'bigstring "")
+    )
   )
-  (if (!= mytest nil)
-    (set 'bigstring ((regex myregex bigstring) 0 ))
+
+  (unless (= mytest nil)
+    (if (> (length myregex) 0)
+      (set 'bigstring ((regex myregex bigstring) 0 ))
+    )
   )
 
   (if (> (length myregex) 0)
@@ -66,6 +73,9 @@
 
   (if (> (length myregex) 0)
     (println "matched " bigstring)
+  )
+  (if (= (length myregex) 0)
+    (println "does bigstring get nulled: " bigstring)
   )
 
 	; write bigstring to a file with md5string as hash
