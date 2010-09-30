@@ -90,6 +90,7 @@ puts "authorized? #{client.authorized?}"
 
 # url
 # alerts
+# send DMs to this account
 # regex
 puts ARGV.inspect
 puts ARGV[0]
@@ -97,13 +98,13 @@ puts ARGV[1]
 puts ARGV[2]
 
 s = Sitebeagle.new
-s.url = ARGV[0]
+s.url = ARGV[0].chomp
 puts s.url
-s.microwait = ARGV[1].to_i
+s.microwait = ARGV[1].chomp.to_i
 puts s.getmd5
 s.pollurl
 
 5.times do
-  client.message("barce", "something's changed with #{s.url}")
+  client.message("#{ARGV[2].chomp}", "something's changed with #{s.url}")
   sleep 5
 end
