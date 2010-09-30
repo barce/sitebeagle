@@ -104,7 +104,9 @@ s.microwait = ARGV[1].chomp.to_i
 puts s.getmd5
 s.pollurl
 
+i = 1
 5.times do
-  client.message("#{ARGV[2].chomp}", "something's changed with #{s.url}")
+  client.message("#{ARGV[2].chomp}", "something's changed with #{s.url} : alert #{i}")
   sleep 5
+  i = i + 1
 end
