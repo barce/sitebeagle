@@ -41,4 +41,4 @@ client = TwitterOAuth::Client.new(
 
 puts "authorized? #{client.authorized?}"
 
-client.update("Testing OAuth...")
+
