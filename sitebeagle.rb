@@ -47,6 +47,7 @@ class Sitebeagle
       end
       t = Time.new
       puts t
+      puts @url
       puts @first_md5
       puts @current_md5
       puts i_sent
