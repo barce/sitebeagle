@@ -8,8 +8,54 @@ require "yaml"
 require "net/http"
 require "uri"
 require "twitter_oauth"
+require 'digest/md5'
 
 puts "Hi"
+
+class Sitebeagle
+
+  attr_accessor :url, :first_md5, :current_md5, :microwait, :myregex
+
+  #
+  # furl: create a diskspace friendly url
+  #
+  def furl
+
+  end
+
+  def getmd5
+
+    s_data = Net::HTTP.get_response(URI.parse(@url)).body
+    s_md5  = Digest::MD5.hexdigest(s_data)
+
+    return s_md5
+
+  end
+
+  def pollurl
+
+    @first_md5    = getmd5
+    @currenct_md5 = getmd5
+
+    i_sent = 1
+    while i_sent == 1
+
+      sleep @microwait
+      @current_md5 = getmd5
+      if @first_md5 != @current_md5
+        i_sent = 0
+      end
+      t = Time.new
+      puts t
+      puts @first_md5
+      puts @current_md5
+      puts i_sent
+
+    end
+
+  end
+  
+end
 
 yamlstring = ''
 File.open("./auth.yaml", "r") { |f|
@@ -41,4 +87,22 @@ client = TwitterOAuth::Client.new(
 
 puts "authorized? #{client.authorized?}"
 
+# url
+# alerts
+# regex
+puts ARGV.inspect
+puts ARGV[0]
+puts ARGV[1]
+puts ARGV[2]
 
+s = Sitebeagle.new
+s.url = ARGV[0]
+puts s.url
+s.microwait = ARGV[1].to_i
+puts s.getmd5
+s.pollurl
+
+5.times do
+  client.message("barce", "something's changed with #{s.url}")
+  sleep 5
+end
