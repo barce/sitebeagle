@@ -5,6 +5,12 @@ Sitebeagle watches a site for you.
 By: barce
 
 
+Note: We are moving sitebeagle to Ruby using OAuth authentication. 
+The newLISP part was cool and I got to find out about new things, but
+right now I just need something that works & now. - barce 9/29/2010
+
+
+
 requirements:
   curl
   twitter account from http://twitter.com/ for sending changes / outages
