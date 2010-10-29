@@ -15,27 +15,19 @@ requirements:
   curl
   twitter account from http://twitter.com/ for sending changes / outages
 	twitter account from http://twitter.com/ for receiving changes / outages
-  newlisp 10.0 or greater
+  ruby
 
 
 how to use:
-	open checksite.lsp in an editor.
-	where it says EDIT BELOW put in the necessary info:
-		twitter sender account
-		twitter sender account password
-		twitter recipient, person who gets twitters saying site is down
-	start sitebeagle:
-		./checksite.lsp http://example.com/ number_of_tweets_to_send_if_site_changed
-
-  example: 
-    ./checksite.lsp http://codebelay.com/ 1 ""
-
-  example with regex:
-    ./checksite.lsp http://www.codebelay.com/ 1 "February.*"
+  =1= get a consumer_key and consumer_secret for this application from twitter
+  =2= put those into a file called auth.yaml
+  =3= edit get_oauth.rb. point it to auth.yaml and set oauth_confirm_url .
+  =4= run get_oauth.rb
+  =5= note values for access_token and access_secret
+  =6= put those values into auth.yaml
+  =7= run sitebeagle.rb by typing: ./sitebeagle.rb http://example.com 5
 
 known issues:
-	if a site always changes its html when you go to it, sitebeagle won't work,
-  unless a regex is used.
+	if a site changes its html each time when you go to it, sitebeagle won't work
 
-  please use a regex to track only the parts of a page you want to track.
 
