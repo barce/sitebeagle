@@ -25,8 +25,23 @@ class Sitebeagle
 
   def getmd5
 
-    s_data = Net::HTTP.get_response(URI.parse(@url)).body
-    s_md5  = Digest::MD5.hexdigest(s_data)
+	 # add begin rescue ensure here
+	 begin
+
+
+		s_data = Net::HTTP.get_response(URI.parse(@url)).body
+		s_md5  = Digest::MD5.hexdigest(s_data)
+
+	 rescue Net::Error => e
+		puts "Error code: #{e.errno}"
+		puts "Error message: #{e.error}"
+	 ensure
+		if s_data.nil?
+		  return Digest::MD5.hexdigest("")
+		else
+		  return Digest::MD5.hexdigest(s_data)
+		end
+	 end
 
     return s_md5
 
