@@ -2,7 +2,7 @@
 
 
 require "rubygems"
-require "mysql"
+# require "mysql"
 require "date"
 require "yaml"
 require "net/http"
@@ -31,6 +31,12 @@ class Sitebeagle
 
 		s_data = Net::HTTP.get_response(URI.parse(@url)).body
 		s_md5  = Digest::MD5.hexdigest(s_data)
+    stuff = File.open("#{s_md5}.txt", "w")
+    stuff.write(@url)
+    stuff.write("\n")
+    stuff.write("\n")
+    stuff.write(s_data)
+    stuff.close
 
 	 rescue Net::Error => e
 		puts "Error code: #{e.errno}"
