@@ -25,29 +25,39 @@ class Sitebeagle
 
   def getmd5
 
-	 # add begin rescue ensure here
-	 begin
+    # add begin rescue ensure here
+    begin
 
+      s_data = Net::HTTP.get_response(URI.parse(self.url)).body
+      unless self.myregex.nil?
+	if s_data =~ /(#{self.myregex})/
+	  s_md5  = Digest::MD5.hexdigest(self.myregex)
+	  puts "using regex"
+	  puts "md5: #{s_md5}"
+	else 
+	  s_md5  = Digest::MD5.hexdigest(s_data)
+	  puts "not using regex"
+	  puts "md5: #{s_md5}"
+	end
 
-		s_data = Net::HTTP.get_response(URI.parse(@url)).body
-		s_md5  = Digest::MD5.hexdigest(s_data)
-    stuff = File.open("#{s_md5}.txt", "w")
-    stuff.write(@url)
-    stuff.write("\n")
-    stuff.write("\n")
-    stuff.write(s_data)
-    stuff.close
+      end
+      stuff = File.open("#{s_md5}.txt", "w")
+      stuff.write(self.url)
+      stuff.write("\n")
+      stuff.write("\n")
+      stuff.write(s_data)
+      stuff.close
 
-	 rescue Net::Error => e
-		puts "Error code: #{e.errno}"
-		puts "Error message: #{e.error}"
-	 ensure
-		if s_data.nil?
-		  return Digest::MD5.hexdigest("")
-		else
-		  return Digest::MD5.hexdigest(s_data)
-		end
-	 end
+    rescue Net::Error => e
+      puts "Error code: #{e.errno}"
+      puts "Error message: #{e.error}"
+    ensure
+      if s_data.nil?
+	return Digest::MD5.hexdigest("")
+      else
+	return Digest::MD5.hexdigest(s_data)
+      end
+    end
 
     return s_md5
 
@@ -55,22 +65,22 @@ class Sitebeagle
 
   def pollurl
 
-    @first_md5    = getmd5
-    @currenct_md5 = getmd5
+    self.first_md5    = self.getmd5
+    self.current_md5 = self.getmd5
 
     i_sent = 1
     while i_sent == 1
 
-      sleep @microwait
-      @current_md5 = getmd5
-      if @first_md5 != @current_md5
+      sleep self.microwait
+      self.current_md5 = getmd5
+      if self.first_md5 != self.current_md5
         i_sent = 0
       end
       t = Time.new
       puts t
-      puts @url
-      puts @first_md5
-      puts @current_md5
+      puts self.url
+      puts "first_md5:   #{self.first_md5}"
+      puts "current_md5: #{self.current_md5}"
       puts i_sent
 
     end
@@ -117,12 +127,16 @@ puts ARGV.inspect
 puts ARGV[0]
 puts ARGV[1]
 puts ARGV[2]
+puts ARGV[3]
 
 s = Sitebeagle.new
 s.url = ARGV[0].chomp
 puts s.url
+unless ARGV[3].nil?
+  s.myregex = ARGV[3].chomp
+end
 s.microwait = ARGV[1].chomp.to_i
-puts s.getmd5
+puts "s.getmd5 #{s.getmd5}"
 s.pollurl
 
 i = 1
