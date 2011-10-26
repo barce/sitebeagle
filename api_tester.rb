@@ -2,7 +2,6 @@
 
 
 require "rubygems"
-# require "mysql"
 require "date"
 require "yaml"
 require "net/http"
@@ -10,7 +9,6 @@ require "uri"
 require "twitter_oauth"
 require 'digest/md5'
 
-puts "Hi"
 
 
     # s_data = Net::HTTP.get_response(URI.parse(@url)).body
