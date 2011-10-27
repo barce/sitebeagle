@@ -2,15 +2,12 @@
 
 
 require "rubygems"
-# require "mysql"
 require "date"
 require "yaml"
 require "net/http"
 require "uri"
 require "twitter_oauth"
 require 'digest/md5'
-
-puts "Hi"
 
 class Sitebeagle
 
