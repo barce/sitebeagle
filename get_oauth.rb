@@ -9,8 +9,6 @@ require "net/http"
 require "uri"
 require "twitter_oauth"
 
-puts "Hi"
-
 yamlstring = ''
 File.open("./auth.yaml", "r") { |f|
   yamlstring = f.read
