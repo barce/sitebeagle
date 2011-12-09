@@ -25,7 +25,10 @@ class Sitebeagle
     # add begin rescue ensure here
     begin
 
+      puts "calling url: #{self.url}"
       s_data = Net::HTTP.get_response(URI.parse(self.url)).body
+      # puts "-- s_data --"
+      # puts s_data
       unless self.myregex.nil?
 	if s_data =~ /(#{self.myregex})/
 	  s_md5  = Digest::MD5.hexdigest(self.myregex)
@@ -45,7 +48,7 @@ class Sitebeagle
       stuff.write(s_data)
       stuff.close
 
-    rescue Net::Error => e
+    rescue Net::HTTPError => e
       puts "Error code: #{e.errno}"
       puts "Error message: #{e.error}"
     ensure
