@@ -25,7 +25,7 @@ how to use:
   =4= run get_oauth.rb
   =5= note values for access_token and access_secret
   =6= put those values into auth.yaml
-  =7= run sitebeagle.rb by typing: ./sitebeagle.rb http://example.com 5
+  =7= run sitebeagle.rb by typing: ./sitebeagle.rb http://example.com 5 twitter_username
 
 known issues:
 	if a site changes its html each time when you go to it, sitebeagle won't work
