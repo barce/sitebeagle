@@ -1,0 +1,5 @@
+# cp auth.yaml.sample auth.yaml
+consumer_key: YOUR_CONSUMER_KEY
+consumer_secret: YOUR_CONSUMER_SECRET
+auth_token: YOUR_AUTH_TOKEN
+auth_secret: YOUR_AUTH_SECRET
