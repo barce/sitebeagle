@@ -17,20 +17,23 @@ puts settings.inspect
 
 CLIENT_ID     = settings['consumer_key']
 CLIENT_SECRET = settings['consumer_secret']
+CALLBACK_URL  = 'http://127.0.0.1:4001/photos/callback'
+PROVIDER_URL  = 'http://localhost.com:3000/'
 
 client = OAuth2::Client.new(
   CLIENT_ID,
   CLIENT_SECRET, 
   :authorize_url => "/oauth/authorize", 
   :token_url => "/oauth/access_token", 
-  :site => "http://localhost.com:3000/",
+  :site => PROVIDER_URL,
 )
 
-puts client.auth_code.authorize_url(:redirect_uri => "http://hipsterhookups.com/photos/callback")
+puts client.auth_code.authorize_url(:redirect_uri => CALLBACK_URL)
 puts "gets.chomp"
 code = gets.chomp
+# code = "apdae76nbe7gs47r2ai5kqv1z"
 
-token = client.auth_code.get_token(code, :redirect_uri => "http://hipsterhookups.com/photos/callback")
+token = client.auth_code.get_token(code, :redirect_uri => CALLBACK_URL, :response_type => 'token')
 
 token = OAuth2::AccessToken.new(client, token.token, {
   :mode => :query,
