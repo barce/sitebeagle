@@ -43,5 +43,5 @@ if track.nil?
   exit
 end
 TweetStream::Client.new.track(track) do |status|
-  puts "#{status.inspect}"
+  puts "#{status.user.screen_name}: #{status.text}"
 end
