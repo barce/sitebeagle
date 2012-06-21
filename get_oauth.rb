@@ -2,7 +2,7 @@
 
 
 require "rubygems"
-require "mysql"
+# require "mysql"
 require "date"
 require "yaml"
 require "net/http"
