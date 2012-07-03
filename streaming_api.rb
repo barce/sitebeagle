@@ -43,6 +43,5 @@ if track.nil?
   exit
 end
 TweetStream::Client.new.track(track) do |status|
-  # puts "#{status.inspect}"
   puts "#{status.user.screen_name}: #{status.text} http://twitter.com/#{status.user.screen_name}/status/#{status.id}"
 end
