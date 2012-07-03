@@ -22,44 +22,44 @@ class Sitebeagle
 
   def getmd5
 
+    @s_md5 = ''
+    @s_data = ''
     # add begin rescue ensure here
     begin
 
       puts "calling url: #{self.url}"
-      s_data = Net::HTTP.get_response(URI.parse(self.url)).body
+      @s_data = Net::HTTP.get_response(URI.parse(self.url)).body
+      # http = Net::HTTP.new('api.via.me', 80)
+      #http.open_timeout = 5
+      #http.read_timeout = 5
+      #request = Net::HTTP::Get.new(URI.parse(self.url))
+
       # puts "-- s_data --"
       # puts s_data
-      unless self.myregex.nil?
-	if s_data =~ /(#{self.myregex})/
-	  s_md5  = Digest::MD5.hexdigest(self.myregex)
-	  puts "using regex"
-	  puts "md5: #{s_md5}"
-	else 
-	  s_md5  = Digest::MD5.hexdigest(s_data)
-	  puts "not using regex"
-	  puts "md5: #{s_md5}"
-	end
+      @s_md5  = Digest::MD5.hexdigest(@s_data)
+      puts "not using regex"
+      puts "md5: #{@s_md5}"
 
-      end
-      stuff = File.open("#{s_md5}.txt", "w")
+      puts "writing file #{@s_md5}.txt ..."
+      stuff = File.open("#{@s_md5}.txt", "w")
       stuff.write(self.url)
       stuff.write("\n")
       stuff.write("\n")
-      stuff.write(s_data)
+      stuff.write(@s_data)
       stuff.close
 
     rescue Net::HTTPError => e
       puts "Error code: #{e.errno}"
       puts "Error message: #{e.error}"
     ensure
-      if s_data.nil?
+      if @s_data.nil?
 	return Digest::MD5.hexdigest("")
       else
-	return Digest::MD5.hexdigest(s_data)
+	return Digest::MD5.hexdigest(@s_data)
       end
     end
 
-    return s_md5
+    return @s_md5
 
   end
 
