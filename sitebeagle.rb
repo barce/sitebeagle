@@ -8,6 +8,24 @@ require "net/http"
 require "uri"
 require "twitter_oauth"
 require 'digest/md5'
+require 'optparse'
+
+
+opts = OptionParser.new
+
+OptionParser.new do |o|
+  o.on('--url URL') { |url| $url = url }
+  o.on('-h') { output_help; exit }
+  o.on('--user USER') { |user| $user = user }
+  o.on('--alerts ALERTS') { |alerts| $alerts = alerts }
+  o.on('--regex REGEX') { |regex| $regex = regex }
+  o.parse!
+end
+
+url    = $url
+user   = $user
+alerts = $alerts
+regex  = $regex
 
 class Sitebeagle
 
@@ -37,7 +55,7 @@ class Sitebeagle
       # puts "-- s_data --"
       # puts s_data
       @s_md5  = Digest::MD5.hexdigest(@s_data)
-      puts "not using regex"
+      puts "myregex: (#{self.myregex})"
       puts "md5: #{@s_md5}"
 
       puts "writing file #{@s_md5}.txt ..."
@@ -123,25 +141,18 @@ puts "authorized? #{client.authorized?}"
 # alerts
 # send DMs to this account
 # regex
-puts ARGV.inspect
-puts ARGV[0]
-puts ARGV[1]
-puts ARGV[2]
-puts ARGV[3]
 
 s = Sitebeagle.new
-s.url = ARGV[0].chomp
+s.url = url
 puts s.url
-unless ARGV[3].nil?
-  s.myregex = ARGV[3].chomp
-end
-s.microwait = ARGV[1].chomp.to_i
+s.myregex = regex
+s.microwait = 10
 puts "s.getmd5 #{s.getmd5}"
 s.pollurl
 
 i = 1
-5.times do
-  client.message("#{ARGV[2].chomp}", "something's changed with #{s.url} : alert #{i}")
+alerts.times do
+  client.message("#{user.chomp}", "something's changed with #{s.url} : alert #{i}")
   sleep 5
   i = i + 1
 end
