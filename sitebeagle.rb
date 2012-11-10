@@ -54,8 +54,18 @@ class Sitebeagle
 
       # puts "-- s_data --"
       # puts s_data
+      begin
+        if self.myregex.length > 0
+          if @s_data =~ /(#{self.myregex})/
+            @s_data = $1
+          end
+        end
+      rescue
+        # silent
+      end
       @s_md5  = Digest::MD5.hexdigest(@s_data)
       puts "myregex: (#{self.myregex})"
+
       puts "md5: #{@s_md5}"
 
       puts "writing file #{@s_md5}.txt ..."
@@ -146,12 +156,12 @@ s = Sitebeagle.new
 s.url = url
 puts s.url
 s.myregex = regex
-s.microwait = 10
+s.microwait = 60
 puts "s.getmd5 #{s.getmd5}"
 s.pollurl
 
 i = 1
-alerts.times do
+alerts.to_i.times do
   client.message("#{user.chomp}", "something's changed with #{s.url} : alert #{i}")
   sleep 5
   i = i + 1
