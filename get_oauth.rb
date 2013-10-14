@@ -28,7 +28,7 @@ puts settings.inspect
 #
 # my oauth callback url
 # http://l33tcave.com/home/
-oauth_confirm_url = 'http://l33tcave.com/home/'
+oauth_confirm_url = 'http://www.sitebeagle.net/timeline'
 
 
 if settings['access_token'].nil?
