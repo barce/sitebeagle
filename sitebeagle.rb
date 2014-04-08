@@ -10,6 +10,11 @@ require "twitter_oauth"
 require 'digest/md5'
 require 'optparse'
 
+def output_help
+
+  puts "usage: sitebeagle.rb --url URL --user USER --alerts Number_of_alerts --regex REGEX"
+
+end
 
 opts = OptionParser.new
 
