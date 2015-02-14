@@ -106,6 +106,7 @@ class Sitebeagle
 
       sleep self.microwait
       self.current_md5 = getmd5
+      # TODO: change to handle an array of md5 hashes
       if self.first_md5 != self.current_md5
         i_sent = 0
       end
