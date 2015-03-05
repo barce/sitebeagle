@@ -30,6 +30,10 @@ how to use:
 known issues:
 	if a site changes its html each time when you go to it, sitebeagle won't work
 
+work around:
+  use the regex functionality on sitebeagle to isolate the html you want to monitor, e.g.:
+  ./sitebeagle.rb --url http://www.meetup.com/Data-Mining/ --user barce --alerts 5 --regex upcomingTab.*span
+
 
 License:
 
