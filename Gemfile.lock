@@ -1,0 +1,20 @@
+GIT
+  remote: git://github.com/barce/twitter_oauth.git
+  revision: 07955b96d235ec3df8101363068e3109cdad78a4
+  specs:
+    twitter_oauth (0.4.94)
+      json (>= 1.8.0)
+      mime-types (>= 1.16)
+      oauth (>= 0.4.7)
+
+GEM
+  specs:
+    json (1.8.1)
+    mime-types (1.25.1)
+    oauth (0.4.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  twitter_oauth!
