@@ -99,27 +99,19 @@ class Sitebeagle
 
   def pollurl
 
-    self.first_md5    = self.getmd5
-    self.current_md5 = self.getmd5
+    self.first_md5   = getmd5
+    self.current_md5 = getmd5
 
-    i_sent = 1
-    while i_sent == 1
-
-      sleep self.microwait
+    while true
+      sleep microwait
       self.current_md5 = getmd5
-      # TODO: change to handle an array of md5 hashes
-      if self.first_md5 != self.current_md5
-        i_sent = 0
-      end
-      t = Time.new
-      puts t
-      puts self.url
-      puts "first_md5:   #{self.first_md5}"
-      puts "current_md5: #{self.current_md5}"
-      puts i_sent
-
+      return 0 if compare_hashes == false
     end
 
+  end
+
+  def compare_hashes 
+    self.first_md5 == self.current_md5
   end
   
 end
