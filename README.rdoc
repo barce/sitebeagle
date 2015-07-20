@@ -1,11 +1,12 @@
-{<img src="https://codeclimate.com/github/barce/sitebeagle/badges/gpa.svg" />}[https://codeclimate.com/github/barce/sitebeagle]
+==README 
 
-"Beagles make good watch dogs." -- from the wikipedia entry for Beagles
+{<img src="https://codeclimate.com/github/barce/sitebeagle/badges/gpa.svg" />}[https://codeclimate.com/github/barce/sitebeagle]
 
 Sitebeagle watches a site for you.
 
-By: barce
+"Beagles make good watch dogs." -- from the wikipedia entry for Beagles
 
+By: barce
 
 Note: We are moving sitebeagle to Ruby using OAuth authentication. 
 The newLISP part was cool and I got to find out about new things, but
