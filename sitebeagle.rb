@@ -44,6 +44,18 @@ class Sitebeagle
 
   end
 
+  def save_body_to_file(s_md5, data)
+
+      puts "writing file #{s_md5}.txt ..."
+      stuff = File.open("#{s_md5}.txt", "w")
+      stuff.write(self.url)
+      stuff.write("\n")
+      stuff.write("\n")
+      stuff.write(data)
+      stuff.close
+
+  end
+
   def getmd5
 
     @s_md5 = ''
@@ -68,13 +80,7 @@ class Sitebeagle
 
       puts "md5: #{@s_md5}"
 
-      puts "writing file #{@s_md5}.txt ..."
-      stuff = File.open("#{@s_md5}.txt", "w")
-      stuff.write(self.url)
-      stuff.write("\n")
-      stuff.write("\n")
-      stuff.write(@s_data)
-      stuff.close
+      save_body_to_file(@s_md5, @s_data)
 
     rescue Net::HTTPError => e
       puts "Error code: #{e.errno}"
@@ -82,9 +88,8 @@ class Sitebeagle
     ensure
       if @s_data.nil?
         return Digest::MD5.hexdigest("")
-      else
-        return Digest::MD5.hexdigest(@s_data)
       end
+      return Digest::MD5.hexdigest(@s_data)
     end
 
     @s_md5
