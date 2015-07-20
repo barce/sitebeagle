@@ -53,13 +53,7 @@ class Sitebeagle
 
       puts "calling url: #{self.url}"
       @s_data = Net::HTTP.get_response(URI.parse(self.url)).body
-      # http = Net::HTTP.new('api.via.me', 80)
-      #http.open_timeout = 5
-      #http.read_timeout = 5
-      #request = Net::HTTP::Get.new(URI.parse(self.url))
 
-      # puts "-- s_data --"
-      # puts s_data
       begin
         if self.myregex.length > 0
           if @s_data =~ /(#{self.myregex})/
@@ -87,13 +81,13 @@ class Sitebeagle
       puts "Error message: #{e.error}"
     ensure
       if @s_data.nil?
-	return Digest::MD5.hexdigest("")
+        return Digest::MD5.hexdigest("")
       else
-	return Digest::MD5.hexdigest(@s_data)
+        return Digest::MD5.hexdigest(@s_data)
       end
     end
 
-    return @s_md5
+    @s_md5
 
   end
 
