@@ -17,7 +17,7 @@ right now I just need something that works & now. - barce 9/29/2010
 requirements:
   curl
   twitter account from http://twitter.com/ for sending changes / outages
-	twitter account from http://twitter.com/ for receiving changes / outages
+  twitter account from http://twitter.com/ for receiving changes / outages
   ruby
 
 
